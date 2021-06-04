@@ -24,11 +24,6 @@ function computerPlay() {
 
 }
 
-const CHOICES = ["rock", "paper", "scissors"];
-let playerSelection = playerSelects();
-let computerSelection = computerPlay();
-
-
 function playerSelects () {
   local_playerSelection = prompt("Choose (rock/paper/scissors").toLowerCase();
   if (!CHOICES.includes(local_playerSelection)) {
@@ -73,12 +68,9 @@ function playRound(computerSelection, playerSelection) {
 
 }
 
-if (!CHOICES.includes(playerSelection)) {
-  alert("You must select rock, paper or scissors!");
-  playerSelection = prompt("Choose (rock/paper/scissors").toLowerCase();
-}
-
-
+const CHOICES = ["rock", "paper", "scissors"];
+let playerSelection = playerSelects();
+let computerSelection = computerPlay();
 
 </script>
 </html>
