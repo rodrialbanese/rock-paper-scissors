@@ -7,9 +7,7 @@
 
 <script>
 
-function computerPlay() {
-  let choice;
-
+function computerPlay() { //computer select its play
   switch(Math.floor(Math.random()*3) + 1) {
     case 1:
       return "rock"
@@ -24,57 +22,84 @@ function computerPlay() {
 
 }
 
-function playerSelects () {
+function playerSelects () { //player selects its play by prompting checks if is in group of proper choices
   local_playerSelection = prompt("Choose (rock/paper/scissors").toLowerCase();
   if (!CHOICES.includes(local_playerSelection)) {
     alert("You must select rock, paper or scissors!");
     playerSelects();
   }
   else {
-    console.log("encontrado");
     return local_playerSelection;
   }
 }
 
-function playRound(computerSelection, playerSelection) {
+function playRound(computerSelection, playerSelection) { //Function that plays a single round and return who won o draw.
   if (computerSelection === playerSelection) {
-    return "draw"
+    return DRAW;
   }
   else if (computerSelection == "rock") {
     if (playerSelection == "paper") {
-      return "player win"
+      return PLAYERWIN
     }
     else {
-      return "computer win"
+      return COMPUTERWIN
     }
   }
   else if (computerSelection == "paper") {
     if (playerSelection == "rock") {
-      return "computer win"
+      return COMPUTERWIN
     }
     else {
-      return "player win"
+      return PLAYERWIN
     }
   }
   else if (computerSelection == "scissors") {
     if (playerSelection == "rock") {
-      return "player win"
+      return PLAYERWIN
     }
     else {
-      return "computer win"
+      return COMPUTERWIN
     }
   }
 
 
 }
 
-const CHOICES = ["rock", "paper", "scissors"];
-let playerSelection = playerSelects();
-let computerSelection = computerPlay();
+// intitilization
 
-console.log("Humano: "+ playerSelection)
-console.log("Computadora: "+ computerSelection)
-console.log(playRound(computerSelection, playerSelection))
+const CHOICES = ["rock", "paper", "scissors"];
+const PLAYERWIN = 1;
+const COMPUTERWIN = 2;
+const DRAW = 3;
+let computerScore = 0;
+let playerScore = 0;
+
+
+function playGame() { // function that actually play the game - or "gamedirector"
+  for (i=0; i<=4; i++) {
+    let playerSelection = playerSelects()
+    let computerSelection = computerPlay();
+    console.log("---------------------------------")
+    console.log("Player: "+ playerSelection)
+    console.log("Computer: "+ computerSelection)
+    switch(playRound(computerSelection, playerSelection)) {
+      case PLAYERWIN:
+        playerScore++;
+        console.log(`Player wins round. Scores-> Player ${playerScore} / Computer ${computerScore}`)
+        break;
+      case COMPUTERWIN:
+        computerScore++;
+        console.log(`Computer wins round. Scores-> Player ${playerScore} / Computer ${computerScore}`)
+        break;
+      case DRAW:
+        console.log(`Draw!. Scores-> Player ${playerScore} / Computer ${computerScore}`)
+        break;
+    }    
+  }
+}
+
+playGame();
+
 
 </script>
 </html>
