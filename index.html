@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+</body>
+
+<script>
+
+function computerPlay() {
+  let choice;
+
+  switch(Math.floor(Math.random()*3) + 1) {
+    case 1:
+      return "rock"
+      break;
+    case 2:
+      return "paper"
+      break;
+    case 3:
+      return "scissors"
+      break;
+  }
+
+}
+
+const CHOICES = ["rock", "paper", "scissors"];
+let playerSelection = playerSelects();
+let computerSelection = computerPlay();
+
+
+function playerSelects () {
+  local_playerSelection = prompt("Choose (rock/paper/scissors").toLowerCase();
+  if (!CHOICES.includes(local_playerSelection)) {
+    alert("You must select rock, paper or scissors!");
+    playerSelects();
+  }
+  else {
+    console.log("encontrado");
+    return local_playerSelection;
+  }
+}
+
+console.log("Humano: "+ playerSelection)
+console.log("Computadora: "+ computerSelection)
+console.log(playRound(computerSelection, playerSelection))
+
+function playRound(computerSelection, playerSelection) {
+  if (computerSelection === playerSelection) {
+    return "draw"
+  }
+  else if (computerSelection == "rock") {
+    if (playerSelection == "paper") {
+      return "player win"
+    }
+    else {
+      return "computer win"
+    }
+  }
+  else if (computerSelection == "paper") {
+    if (playerSelection == "rock") {
+      return "computer win"
+    }
+    else {
+      return "player win"
+    }
+  }
+  else if (computerSelection == "scissors") {
+    if (playerSelection == "rock") {
+      return "player win"
+    }
+    else {
+      return "computer win"
+    }
+  }
+
+
+}
+
+
+
+
+
+</script>
+</html>
